@@ -7,7 +7,33 @@
 export function getAllWithdrawals(array) {
   // Your code goes here...
 
+let zeroWithdrawals=[];
+let sumOfWithdrawals=Number([]);
+let sumOfWithdrawalsAllAccounts=[];
+
+
+for (let i = 0; i < array.length; i++) {
+  if (!(array[i].hasOwnProperty("withdrawals"))) {
+    zeroWithdrawals = 0; sumOfWithdrawalsAllAccounts.push(zeroWithdrawals); 
+  }
+  else if ((array[i].hasOwnProperty("withdrawals"))) {
+    for (let j=0; j < array[i].withdrawals.length; j++){
+      sumOfWithdrawals += (array[i].withdrawals[j]);
+      
+    }
+    sumOfWithdrawalsAllAccounts.push(sumOfWithdrawals); 
+    sumOfWithdrawals =0;
+  } 
+
+  }
+   return sumOfWithdrawalsAllAccounts;
 }
+
+
+/*javascript typeof shows number but when adding concantenates. 
+I tried  "sumOfWithdrawals += parseInt(array[i].withdrawals[j]);" -did not work. 
+Also tried "sumOfWithdrawals += Number(array[i].withdrawals[j]);" -did not work either.
+What worked was assigning the variable as a number: "let sumOfWithdrawals=Number([]);"" */
 
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-11"

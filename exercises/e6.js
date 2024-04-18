@@ -6,7 +6,17 @@
 export function getClientWithNoMoney(array) {
   // Your code goes here...
 
-}
+  let zeroBalanceAccountHolder =[];
+  for (let key in array) {
+    if (array[key].balance == 0.0){
+    zeroBalanceAccountHolder.push (array[key].name);
+    }
+  }
+  return zeroBalanceAccountHolder;
+   };
+  
+
+
 
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-6"

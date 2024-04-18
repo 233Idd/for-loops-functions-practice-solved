@@ -6,6 +6,14 @@
 export function getClientsWithLetterInName(array, letter) {
   // Your code goes here...
 
+  let accountHoldersWithGivenLetter = [];
+  
+  for (let i = 0; i < array.length; i++) {
+    if ((array[i].name).includes(letter.toLowerCase()) ||(array[i].name).includes(letter.toUpperCase())) {
+      accountHoldersWithGivenLetter.push(array[i].name);     
+    }
+  }
+  return accountHoldersWithGivenLetter;
 }
 
 // === TEST YOURSELF ===

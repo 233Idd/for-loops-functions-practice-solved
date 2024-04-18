@@ -7,9 +7,50 @@
 
 export function getClientsWithWrongBalance(array) {
   // Your code goes here...
-
-}
-
+ 
+ 
+  let sumOfWithdrawals= Number([]);
+  let sumOfDeposits= Number([]);
+  let notEqualBalance=[];
+  
+  
+  for (let i = 0; i < array.length; i++) {
+    if ((array[i].hasOwnProperty("withdrawals")) && (array[i].hasOwnProperty("deposits")) && (array[i].hasOwnProperty("balance"))) {
+      for (let j=0; j < array[i].withdrawals.length; j++){
+        sumOfWithdrawals += (array[i].withdrawals[j]);
+      } 
+          for (let k=0; k < array[i].deposits.length; k++){
+        sumOfDeposits += (array[i].deposits[k]);
+      } 
+    } 
+  
+ else if (!(array[i].hasOwnProperty("withdrawals")) && (array[i].hasOwnProperty("deposits"))) {
+              for (let k=0; k < array[i].deposits.length; k++){
+        sumOfDeposits += (array[i].deposits[k]);
+        sumOfWithdrawals= 0;
+      }
+ 
+      }
+      
+      else if (!(array[i].hasOwnProperty("withdrawals")) && !(array[i].hasOwnProperty("deposits"))){
+          sumOfDeposits = 0;
+        sumOfWithdrawals = 0;
+          
+      }
+       
+     if ((sumOfDeposits - sumOfWithdrawals) !== array[i].balance){
+        notEqualBalance.push(array[i]);  
+ }
+ 
+     //console.log((sumOfDeposits -sumOfWithdrawals));
+     sumOfDeposits = 0;
+     sumOfWithdrawals = 0;
+ 
+ }
+ 
+ return  notEqualBalance;
+    
+ }
 
 
 // === TEST YOURSELF ===
