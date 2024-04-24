@@ -6,22 +6,16 @@
 
 export function getClientWithGreatestBalance(array) {
   // Your code goes here...
-
-  let maximumBalance= [];
-  let maximumCheck =[];
-  let leastBalance = array[0].balance;
-
-  for (let i = 0; i < array.length; i++) {
-    if (array[i].balance>leastBalance) {maximumCheck=(array[i]);
-      }
+let maxBalance=[array[0]];
+for (let user of array) {
+  if (user.balance >maxBalance[0].balance) {
+    maxBalance[0]=user;
+  }
 }
-  maximumBalance.push(maximumCheck);
-      return maximumBalance;
+return maxBalance;
 }
 
-
-
-
+ 
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-8"
 // If the test has all tests passed, switch to the next exercise file

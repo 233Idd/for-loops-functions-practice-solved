@@ -7,29 +7,23 @@
 
 export function getClientWithLeastPositiveBalance(array) {
   // Your code goes here...
-
-  let zeroAccounts =[];
-  let leastPositiveBalance= [];
-  let leastBalance = array[0].balance;;
-  let testForLeast =[];
-
-
-
-  for (let i = 0; i < array.length; i++) {
-    
-       if (array[i].balance>0 && ((array[i].balance <= leastBalance)|| (array[i].balance <array[(i-1)].balance))){
-      leastBalance = array[i].balance;  
-      testForLeast=array[i];
-}      
-else if (array[i].balance <= 0){zeroAccounts.push(array[i]);} 
+  let leastBalance =[];
+  for (let user of array){
+    if (user.balance <=0){
+      continue;
+    }
+    else if (leastBalance.length===0){
+      leastBalance[0]=user;
+    }
+    else if (user.balance < leastBalance[0].balance) {
+      leastBalance[0]=user;
+      
+    } 
+  }
+  return leastBalance;
 }
-if (zeroAccounts.length==array.length){return new Array();}
-else {
 
-leastPositiveBalance.push(testForLeast);
-return leastPositiveBalance;}
-  
-}
+
 
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-7"

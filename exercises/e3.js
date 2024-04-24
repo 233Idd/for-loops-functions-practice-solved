@@ -17,7 +17,7 @@ export function getAverage(array) {
   return sum/array.length;
   }
  
-  console.log(getAverage([22, 45, 4, 65]));
+
 
 
 
@@ -40,7 +40,7 @@ export function getStringSum(str) {
   return sumOfStringIntegers;
   }
   
-  console.log(getStringSum("GH2U87A")); 
+
   
 
 

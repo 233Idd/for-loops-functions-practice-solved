@@ -11,14 +11,9 @@ export function doesArrayInclude(array, value) {
 
 for (let i = 0; i<array.length; i++){
    
-    if (Array.isArray(array[i])){
-  for (let j = 0; j<array[i].length; j++) {
-     if (array[i][j]==value) {return true;}
+     if (array[i] ===value) return true;
 }
-}
-else if (array[i]==value) {return true;}
-}
-//else {return false;} Not sure why using the else statement was giving an error; unexpected token 'else'
+
 return false;
 }
 

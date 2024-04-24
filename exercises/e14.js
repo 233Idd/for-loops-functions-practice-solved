@@ -8,51 +8,32 @@
 export function getClientsWithWrongBalance(array) {
   // Your code goes here...
  
- 
-  let sumOfWithdrawals= Number([]);
-  let sumOfDeposits= Number([]);
   let notEqualBalance=[];
   
   
-  for (let i = 0; i < array.length; i++) {
-    if ((array[i].hasOwnProperty("withdrawals")) && (array[i].hasOwnProperty("deposits")) && (array[i].hasOwnProperty("balance"))) {
-      for (let j=0; j < array[i].withdrawals.length; j++){
-        sumOfWithdrawals += (array[i].withdrawals[j]);
+  for (let user of array) {
+    let sumOfWithdrawals=0;
+    let sumOfDeposits =0;
+     if (user.deposits){
+      for (let deposit of user.deposits){
+        sumOfDeposits += deposit;
       } 
-          for (let k=0; k < array[i].deposits.length; k++){
-        sumOfDeposits += (array[i].deposits[k]);
-      } 
+    }
+      if (user.withdrawals){
+        for (let withdrawal of user.withdrawals){
+          sumOfWithdrawals += withdrawal;
+        } 
     } 
-  
- else if (!(array[i].hasOwnProperty("withdrawals")) && (array[i].hasOwnProperty("deposits"))) {
-              for (let k=0; k < array[i].deposits.length; k++){
-        sumOfDeposits += (array[i].deposits[k]);
-        sumOfWithdrawals= 0;
+        if ((sumOfDeposits - sumOfWithdrawals) !== user.balance){
+        notEqualBalance.push(user);     
       }
- 
-      }
-      
-      else if (!(array[i].hasOwnProperty("withdrawals")) && !(array[i].hasOwnProperty("deposits"))){
-          sumOfDeposits = 0;
-        sumOfWithdrawals = 0;
-          
-      }
-       
-     if ((sumOfDeposits - sumOfWithdrawals) !== array[i].balance){
-        notEqualBalance.push(array[i]);  
+         
  }
- 
-     //console.log((sumOfDeposits -sumOfWithdrawals));
-     sumOfDeposits = 0;
-     sumOfWithdrawals = 0;
- 
- }
- 
  return  notEqualBalance;
-    
+ 
  }
-
-
+ 
+ 
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-14"
 // If the test has all tests passed, switch to the next exercise file

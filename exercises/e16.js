@@ -7,24 +7,16 @@
 
 export function flatArrays(array) {
   // Your code goes here...
-let flattenedArray =[];
+  let flattenedArray =[];
 
-for (let i = 0; i<array.length; i++){
-    console.log(array[i]);
-    if (Array.isArray(array[i])){
-  for (let j = 0; j<array[i].length; j++) {
-     
-     flattenedArray.push(array[i][j]);
-           //console.log(array[i][j]);}
-}
-}
-else {flattenedArray.push(array[i]);}
-}
-return flattenedArray;
-}
-
-
-
+  for (let i = 0; i<array.length; i++){
+    for (let j = 0; j<array[i].length; j++) {
+       flattenedArray.push(array[i][j]);
+  }
+  }
+  return flattenedArray;
+  }
+  
 
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-16"

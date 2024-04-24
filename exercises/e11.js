@@ -7,27 +7,19 @@
 export function getAllWithdrawals(array) {
   // Your code goes here...
 
-let zeroWithdrawals=[];
-let sumOfWithdrawals=Number([]);
-let sumOfWithdrawalsAllAccounts=[];
-
-
-for (let i = 0; i < array.length; i++) {
-  if (!(array[i].hasOwnProperty("withdrawals"))) {
-    zeroWithdrawals = 0; sumOfWithdrawalsAllAccounts.push(zeroWithdrawals); 
-  }
-  else if ((array[i].hasOwnProperty("withdrawals"))) {
-    for (let j=0; j < array[i].withdrawals.length; j++){
-      sumOfWithdrawals += (array[i].withdrawals[j]);
-      
+  let zeroWithdrawals=[];
+  for (let user of array){
+    let userWithdrawals =0;
+    if (user.withdrawals){
+      for (let amount of user.withdrawals){
+        userWithdrawals += amount;
+      }
     }
-    sumOfWithdrawalsAllAccounts.push(sumOfWithdrawals); 
-    sumOfWithdrawals =0;
-  } 
-
+    zeroWithdrawals.push(userWithdrawals);
   }
-   return sumOfWithdrawalsAllAccounts;
+  return zeroWithdrawals;
 }
+
 
 
 /*javascript typeof shows number but when adding concantenates. 

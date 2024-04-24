@@ -5,16 +5,22 @@
 
 export function getClientsWithLetterInName(array, letter) {
   // Your code goes here...
-
-  let accountHoldersWithGivenLetter = [];
   
-  for (let i = 0; i < array.length; i++) {
-    if ((array[i].name).includes(letter.toLowerCase()) ||(array[i].name).includes(letter.toUpperCase())) {
-      accountHoldersWithGivenLetter.push(array[i].name);     
-    }
+  let namesWithGivenLetter = [];
+  
+  for (let key of array){
+      if (key.name){
+      for (let letters of key.name) {
+        if (letters === letter.toLowerCase() ||
+        letters === letter.toUpperCase()) {
+          namesWithGivenLetter.push(key.name);  
+          break;
+        }
   }
-  return accountHoldersWithGivenLetter;
-}
+  }
+  }
+  return namesWithGivenLetter;
+  }
 
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-10"

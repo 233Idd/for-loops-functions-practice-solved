@@ -16,7 +16,6 @@ for (let key in array) {
 return accountHolder;
  };
 
- //console.log(getAllClientNames(bankAccounts));
 
 
 

@@ -7,27 +7,22 @@
 export function getAllDepositsGreaterThanOneHundred(array) {
 // Your code goes here...
   
-let greaterThanHundren=[];
 let AllDepositsGreaterThanHundren=[];
 
 
-for (let i = 0; i < array.length; i++) {
-if ((array[i].hasOwnProperty("deposits"))) {
-  for (let j=0; j < array[i].deposits.length; j++){
-    if (array[i].deposits[j]>100){
-    greaterThanHundren=array[i].deposits[j];
-    AllDepositsGreaterThanHundren.push(greaterThanHundren)
-  }
- 
-} 
-
+for (let user of array) {
+   if (user.deposits){
+        for (let amount of user.deposits){
+              if (amount>100){
+        AllDepositsGreaterThanHundren.push(amount);
+    } 
 }
- 
 }
-return AllDepositsGreaterThanHundren;
+}
+ return AllDepositsGreaterThanHundren;
 }
 
-
+//if you don't put the condition on line 14 "if (user.deposits){", gives error that user.deposit is not iterable.
 
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-12"
